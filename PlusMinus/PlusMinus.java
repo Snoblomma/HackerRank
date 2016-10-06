@@ -1,9 +1,7 @@
-package Algorithms;
-
 import java.text.DecimalFormat;
 import java.util.*;
 
-public class PlusMinus {
+public class Solution {
 
 	public static void main(String[] args) {
 
