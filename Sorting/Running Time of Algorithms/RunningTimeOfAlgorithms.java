@@ -1,8 +1,8 @@
 import java.util.*;
 
 public class Solution {
-
-    		int count = 0;
+	public static void insertionSort(int[] A) {
+		int count = 0;
 
 		for (int i = 1; i < A.length; i++) {
 			if(A[i] < A[i-1]){
