@@ -50,7 +50,6 @@ public class Solution {
 				} else if (array[n - 4] == 1) {
 					array[n - 3] = 1;
 					count++;
-
 				}
 			}
 		}
