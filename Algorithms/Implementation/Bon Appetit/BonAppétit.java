@@ -2,7 +2,7 @@ package Algorithms;
 
 import java.util.*;
 
-public class BonAppétit {
+public class BonAppÃ©tit {
 
 	public static void main(String[] args) {
 
