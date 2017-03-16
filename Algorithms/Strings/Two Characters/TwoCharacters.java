@@ -34,12 +34,9 @@ public class Solution {
 				if (isValid(k) && k.length() > res) {
 					res = k.length();
 				}
-
 			}
 		}
-
 		System.out.println(res);
-
 	}
 
 	private static boolean isValid(String k) {
@@ -52,5 +49,4 @@ public class Solution {
 		System.err.println(k + " is valid");
 		return true;
 	}
-
 }
