@@ -1,6 +1,6 @@
 Numeros, the Artist, had two lists A and B, such that B was a permutation of A. Numeros was very proud of these lists. Unfortunately, while transporting them from one exhibition to another, some numbers were left out of A. Can you find the missing numbers?
 
-###Notes
+### Notes
 
 * If a number occurs multiple times in the lists, you must ensure that the frequency of that number in both lists is the same. If that is not the case, then it is also a missing number.
 
@@ -10,7 +10,7 @@ Numeros, the Artist, had two lists A and B, such that B was a permutation of A. 
 
 * The difference between maximum and minimum number in B is less than or equal to 100.
 
-###Input Format
+### Input Format
 
 There will be four lines of input:
 
@@ -22,7 +22,7 @@ This is followed by *n* space-separated integers that make up the first list.
 
 This is followed by *m* space-separated integers that make up the second list.
 
-###Constraints
+### Constraints
 
 * 1 ≤ *n,m* ≤ 1000010
 
@@ -32,6 +32,6 @@ This is followed by *m* space-separated integers that make up the second list.
 
 * *Xmax - Xmin* < 101
 
-###Output Format
+### Output Format
 
 Output the missing numbers in ascending order.
