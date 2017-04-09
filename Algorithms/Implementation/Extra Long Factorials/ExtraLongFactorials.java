@@ -12,7 +12,6 @@ public class Solution {
 	}
 
 	private static BigInteger tailFactorial(int N, BigInteger res) {
-
 		if (N < 1) {
 			return res;
 		} else {
