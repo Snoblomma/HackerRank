@@ -23,8 +23,7 @@ public class Solution {
 			if(height[d] > maxh){
 				maxh = height[d];
 			}
-		}
-		
+		}		
 		System.out.println(maxh*length);
 	}
 }
