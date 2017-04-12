@@ -2,17 +2,17 @@ Karl has an array of ***n*** integers defined as *A = a0, a1,...,a(n-1)*. In one
 
 Karl wants all the elements of the array to be equal to one another. To do this, he must delete zero or more elements from the array. Find and print the *minimum* number of deletion operations Karl must perform so that all the array's elements are equal.
 
-###Input Format
+### Input Format
 
 The first line contains an integer, ***n***, denoting the number of elements in array ***A***. 
 The next line contains ***n*** space-separated integers where element ***i*** corresponds to array element *ai (0 ≤ i ≤ n)*.
 
-###Constraints
+### Constraints
 
 * 1 ≤ n ≤ 100
 
 * 1 ≤ ai ≤ 100
 
-###Output Format
+### Output Format
 
 Print a single integer denoting the minimum number of elements Karl must delete for all elements in the array to be equal.
