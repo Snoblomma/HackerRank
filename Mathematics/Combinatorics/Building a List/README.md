@@ -23,6 +23,30 @@ For each testcase, print the entire list of combinations of string S, with each 
 
 ### Constraints 
 
-* 0< T< 50 
-* 1< N< 16 
+* 0< T < 50 
+* 1< N < 16 
 * string S contains only small alphabets(a-z)
+
+### Sample Input
+```
+2
+2
+ab
+3
+xyz
+```
+### Sample Output
+```
+a
+ab
+b
+x
+xy
+xyz
+xz
+y
+yz
+z
+```
+### Explanation 
+In the first case we have ab, the possibilities are a, ab and b. Similarly, all combination of characters of xyz.
