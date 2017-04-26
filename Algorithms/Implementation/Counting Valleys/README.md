@@ -5,3 +5,37 @@ Gary is an avid hiker. He tracks his hikes meticulously, paying close attention 
 GiGiven Gary's sequence of up and down steps during his last hike, find and print the number of valleys he walked through.
 venGiven Gary's sequence of up and down steps during his last hike, find and print the number of valleys he walked through. Gary's sequence of up and down steps during his last hike, find and print the number of valleys he walked through.
 
+Given Gary's sequence of *up* and *down* steps during his last hike, find and print the number of *valleys* he walked through.
+
+### Input Format
+
+The first line contains an integer, *n*, denoting the number of steps in Gary's hike.
+
+The second line contains a single string of *n* characters. Each character is E(*U*, *D*) (where U indicates a step *up* and D indicates a step *down*), and the *i-th* character in the string describes Gary's *i-th* step during the hike.
+
+### Constraints
+
+* 2 ≤ *N* ≤ 10^6
+
+### Output Format
+
+Print a single integer denoting the number of valleys Gary walked through during his hike.
+
+### Sample Input
+```
+8
+UDDDUDUU
+```
+### Sample Output
+```
+1
+```
+### Explanation
+
+If we represent ```_``` as sea level, a step up as ```/```, and a step down as ```\```, Gary's hike can be drawn as:
+```
+_/\      _
+   \    /
+    \/\/
+```
+It's clear that there is only one valley there, so we print 1 on a new line.
