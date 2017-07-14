@@ -1,0 +1,17 @@
+from collections import OrderedDict
+
+d = OrderedDict()
+
+n = int(input())
+
+for i in range(n):
+    s = input().rsplit(" ", 1)
+    item = s[0]
+    price = int(s[1])
+    if item in d:
+        d[item] = int(d[item]) + price
+    else:
+        d[item] = price
+
+for item in d:
+    print(item + " " + str(d[item]))
