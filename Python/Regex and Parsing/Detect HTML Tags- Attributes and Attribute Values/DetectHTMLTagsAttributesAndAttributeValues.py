@@ -7,19 +7,18 @@ comm_started = False
 for i in range(T):
     s = input()
     
-    
     if "-->" in s and "<!--" in s:
         comm_started = False 
-        s = ""
-    
+        k = s.find("<!--")
+        s = s[0:k]
+        
     if "-->" in s:
         comm_started = False  
     if "<!--" in s:
         comm_started = True
-
     
     if comm_started == False:
-        matches = re.finditer(r'([<]{1}([a-z0-9]+))|(["]{1}([\w\-.,\/\s:;=]+)["]{1})|(([\w\-.,\/\:;=]+)[=]{1})', s)
+        matches = re.finditer(r'([<]{1}([a-z0-9]+))|(["]{1}([\w\-.,\/\s:;=&]+)["]{1})|(([\w\-.,\/\:;=]+)[=]{1})', s)
         k1 = ""
         k2 = ""
         for match in matches:
