@@ -1,0 +1,8 @@
+import statistics
+import math
+
+n = int(input())
+X = list(map(int, input().split()))
+
+m = statistics.mean(X)
+print(round(math.sqrt(sum((x-m)**2 for x in X)/n), 1))
