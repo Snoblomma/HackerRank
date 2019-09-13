@@ -12,8 +12,9 @@ class MyHTMLParser(HTMLParser):
 
     def handle_startendtag(self, tag, attrs):
         print("Empty :", tag)
+        if len(attrs) > 0:
+            for attr in attrs:
+                print("-> ", attr[0], " > ", attr[1])
 
-
-
-parser = MyHTMLParser()
-parser.feed(line)
+MyParser = MyHTMLParser()
+MyParser.feed(''.join([input().strip() for _ in range(int(input()))]))
