@@ -3,8 +3,8 @@ import xml.etree.ElementTree as etree
 
 def get_attr_number(node):
     sum = 0
-    for element in tree.iter():
-        sum += len(node.attrib)
+    for child in node.iter():
+        sum += len(child.attrib)
     return sum
     
 if __name__ == '__main__':
