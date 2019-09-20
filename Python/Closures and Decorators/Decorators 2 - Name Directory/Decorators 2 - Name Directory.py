@@ -6,8 +6,6 @@ def person_lister(f):
     def inner(people):
         for person in people:
             person[2] = int(person[2])
-        # people = list(map(lambda x: int(x[2]) , people))
-        print(people)
         people.sort(key=operator.itemgetter(2))
         return [f(person) for person in people]
     return inner
