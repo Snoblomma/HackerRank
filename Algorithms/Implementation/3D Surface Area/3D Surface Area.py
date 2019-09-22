@@ -7,40 +7,35 @@ import re
 import sys
 
 # Complete the surfaceArea function below.
-def surfaceArea(A):
-    h = len(A)
-    w = len(A[0])
-
+def surfaceArea(A, H, W):
     line1 = 0
-    for i in range(w):
-        line1 += A[0][i]
-        line1 += A[w-1][i]
+    for j in range(0, W):
+        line1 += A[0][j]
+        line1 += A[H-1][j]
     print(line1)
 
     line4 = 0
-    for i in range(h):
+    for i in range(0, H):
         line4 += A[i][0]
-        line4 += A[i][h-1]
+        line4 += A[i][W-1]
     print(line4)
 
     hDiff = 0
-    for i in range(h-1):
-        for j in range(w):
-            f1 = A[j][i]
-            f2 = A[j][i+1]
-            f = abs(f1-f2)
-            hDiff += f
+    for i in range(0, H-1):
+        for j in range(0, W):
+            f1 = A[i][j]
+            f2 = A[i+1][j]
+            hDiff +=abs(f1-f2)
     print(hDiff)
 
     wDiff = 0
-    for j in range(w-1):
-        for i in range(h):
-            f1 = A[j][i]
-            f2 = A[j+1][i]
-            f = abs(f1-f2)
-            wDiff += f
+    for j in range(0, W-1):
+        for i in range(0, H):
+            f1 = A[i][j]
+            f2 = A[i][j+1]
+            wDiff += abs(f1-f2)
     print(wDiff)
-    res = w*h*2 + hDiff + wDiff + line1 + line4
+    res = W*H*2 + hDiff + wDiff + line1 + line4
     return res
 
 if __name__ == '__main__':
@@ -57,7 +52,7 @@ if __name__ == '__main__':
     for _ in range(H):
         A.append(list(map(int, input().rstrip().split())))
 
-    result = surfaceArea(A)
+    result = surfaceArea(A, H, W)
 
     fptr.write(str(result) + '\n')
 
