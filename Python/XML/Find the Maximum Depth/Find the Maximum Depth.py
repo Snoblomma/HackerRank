@@ -9,7 +9,8 @@ def depth(elem, level):
         maxdepth = level
 
     for child in elem.iter():
-       depth(elem, level)
+        level += 1
+        depth(elem, level)
     
 
 if __name__ == '__main__':
