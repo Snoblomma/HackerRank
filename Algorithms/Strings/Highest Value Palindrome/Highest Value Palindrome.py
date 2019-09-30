@@ -55,9 +55,9 @@ def maxDiff(a1, a2, mid, k, d):
             a21[i] = 9
             k -= 2
     
-    if mid !=None and k>0:
+    if mid != None and k>0:
         mid = 9
-    else:
+    elif mid == None:
         mid = ''
 
     str1 = ''.join(str(e) for e in a11)
