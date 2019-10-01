@@ -2,13 +2,8 @@
 
 import os
 import sys
+from fractions import gcd
 
-def gcd(x, y):
-    while y != 0:
-        (x, y) = (y, x % y)
-    return x
-
-# Complete the solve function below.
 def solve(x1, y1, x2, y2):
     s1 = abs(x2-x1)
     s2 = abs(y2-y1)
