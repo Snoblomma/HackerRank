@@ -1,27 +1,18 @@
-#!/bin/python3
-
 import os
 import sys
-import math
 
-# Complete the solve function below.
 def solve(a, b, k, m):
-    r = math.sqrt(a*a + b*b)
-    arc = 0
-    if a == 0 and b > 0:
-        arc = math.atan(90)
-    elif a == 0 and b < 0:
-        arc = math.atan(270)
-    else:
-        arc = math.atan(b/a)
-        
-    powX = math.pow(r, k)
-    A = k * arc
-    newX = powX * math.cos(A)
-    newY = powX * math.sin(A)
-    print(round(newX))
-    print(round(newY))
-    return [round(newX)%m, round(newY)%m]
+    def mult(a,b):
+        return ((a[0]*b[0]-a[1]*b[1])%m, (a[0]*b[1]+a[1]*b[0])%m)
+
+    x=(a,b)
+    P=(1,0)
+    while k:
+        if k%2:
+            P=mult(P,x)
+        k//=2
+        x=mult(x,x)
+    return P
 
 
 if __name__ == '__main__':
