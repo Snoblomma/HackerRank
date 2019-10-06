@@ -14,15 +14,25 @@ def solve(a):
         if 1 in s:
             return 'YES'
         else:
-            for x in s:
-                for y in s:
-                    if computeGCD(x, y) == 1:
-                        return 'YES'
+            gcd = computeGCD(a[0], a[1]) 
+            
+            for i in range(2, len(a)): 
+                gcd = computeGCD(gcd, a[i])
+            
+            if gcd == 1:
+                return 'YES'
+
+            else:
+                for x in s:
+                    for y in s:
+                        if x != y:
+                            gcd = computeGCD(x, y)
+                            if gcd == 1:
+                                return 'YES'
     else:
         return 'NO'
 
     return 'NO'
-
 
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')
