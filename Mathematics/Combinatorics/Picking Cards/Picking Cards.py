@@ -1,6 +1,4 @@
 import os
-import sys
-
 
 def solve(c):
     res = 1
@@ -15,7 +13,7 @@ def solve(c):
             res *= h
         print(j2)
     print('res '+ str(res))
-    return res
+    return int(res%1000000007)
 
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')
