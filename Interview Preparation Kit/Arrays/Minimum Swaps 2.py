@@ -9,13 +9,11 @@ def minimumSwaps(arr):
             k = arr[i]-1
             m = arr[k]
             if arr[m-1] == arr[i]:
-                print(str(arr[i]) + ' cound be swapped with ' + str(m))
                 arr[k], arr[i] = arr[i], arr[k]       
-                swappedPairs += 1
             else:
-                s = arr.index(i+1)
+                s = arr.index(i+1, i)
                 arr[s], arr[i] = arr[i], arr[s]       
-                swappedPairs += 1
+            swappedPairs += 1
             
     return swappedPairs
 
