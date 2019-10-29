@@ -2,20 +2,26 @@ import os
 
 def minimumSwaps(arr):
     N = len(arr)
-    swappedPairs = 0
-   
-    for i in range(N):
-        if arr[i] != i+1:
-            k = arr[i]-1
-            m = arr[k]
-            if arr[m-1] == arr[i]:
-                arr[k], arr[i] = arr[i], arr[k]       
-            else:
-                s = arr.index(i+1, i)
-                arr[s], arr[i] = arr[i], arr[s]       
-            swappedPairs += 1
+    positions = [*enumerate(arr)] 
+    positions.sort(key = lambda it:it[1]) 
+    visited = {k:False for k in range(N)} 
+
+    res = 0
+    for i in range(n): 
+        if visited[i] or positions[i][0] == i: 
+            continue
             
-    return swappedPairs
+        cycleSize = 0
+        j = i 
+        while not visited[j]: 
+            visited[j] = True
+            j = positions[j][0] 
+            cycleSize += 1
+
+        if cycleSize > 0: 
+            res += (cycleSize - 1) 
+
+    return res 
 
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')
