@@ -4,7 +4,6 @@ def freqQuery(queries):
     arr = {}
     res = []
     for query in queries:
-        print(query)
         operation = query[0]
         n = query[1]
         if operation == 1:
@@ -24,7 +23,6 @@ def freqQuery(queries):
                     count = 1
                     break
             res.append(count)  
-        print(arr)
     return res
 
 if __name__ == '__main__':
