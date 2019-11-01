@@ -1,6 +1,7 @@
 import math
 
 class Complex(object):
+
     def __init__(self, real, imaginary):
         self.real = real
         self.imaginary = imaginary
@@ -21,10 +22,11 @@ class Complex(object):
         return Complex(real, imaginary)
 
     def __truediv__(self, no):
-        numerator = self*no.conj()
-        denominator = math.pow(no.real, 2)*math.pow(no.imaginary, 2)
-        real = numerator.real/denominator
-        imaginary = numerator.imaginary/denominator
+        real_numerator = self.real * no.real + self.imaginary * no.imaginary
+        imaginary_numerator = self.imaginary * no.real - self.real * no.imaginary
+        denominator = no.real * no.real + no.imaginary * no.imaginary 
+        real = real_numerator / denominator
+        imaginary = imaginary_numerator / denominator
         return Complex(real, imaginary)
 
     def mod(self):
