@@ -5,7 +5,7 @@ class MyHTMLParser(HTMLParser):
         print("Start :", tag)
         if len(attrs) > 0:
             for attr in attrs:
-                print("-> ", attr[0], " > ", attr[1])
+                print("->", attr[0], ">", attr[1])
 
     def handle_endtag(self, tag):
         print("End   :", tag)
@@ -14,7 +14,7 @@ class MyHTMLParser(HTMLParser):
         print("Empty :", tag)
         if len(attrs) > 0:
             for attr in attrs:
-                print("-> ", attr[0], " > ", attr[1])
+                print("->", attr[0], ">", attr[1])
 
 MyParser = MyHTMLParser()
 MyParser.feed(''.join([input().strip() for _ in range(int(input()))]))
