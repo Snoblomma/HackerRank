@@ -1,32 +1,24 @@
 import re
 
-n = list(map(int, input().split()))
+def print_matrix(matrix, n, m):
+    res = ''
+    for m1 in range(m):
+        for n1 in range(n):
+            res += matrix[n1][m1]
 
-s = ""
+    line = re.sub(r"(?<=[a-zA-Z\d]{1})([^a-zA-Z\d]+)(?=[a-zA-Z\d]{1})", " ", res)
+    print(line)
 
-for i in range(n[0]):
-    k = input()
-    for l in range(n[1]-len(k)):
-        k = k + " "
+first_multiple_input = input().rstrip().split()
 
-    for j in range(n[1]):   
-        
-        index = i*j+i+j     
-        s = s[:index] + k[j] + s[index:]
-        
-        
-matches = re.finditer(r'\(?([0-9A-Za-z]+)\)?', s)
-#TODO: improve sub
-#f = re.search(r'\(?([0-9A-Za-z]+)\)?', s).start(0)
-#sub = s[:f]
-sub = ""
+n = int(first_multiple_input[0])
 
-top = 0
-l = []
+m = int(first_multiple_input[1])
 
-for match in matches:
-    l.append(match.group(1))
-    top = match.end(1)
+matrix = []
 
-d = sub+ " ".join(match for match in l) + s[top:]
-print(d)
+for _ in range(n):
+    matrix_item = input()
+    matrix.append(matrix_item)
+
+print_matrix(matrix, n, m)
