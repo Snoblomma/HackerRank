@@ -1,39 +1,26 @@
 import os
 
 def formingMagicSquare(s):
-    n = len(s)
-    M = n*(n**2+1)/2
-    print(n)
-    print(M)
-    middle = abs(5-s[1][1])
-    
-    s[1][1] = 5
 
-    h = []
-    v = []
-    for i in range(n):
-        h1 = 0
-        for j in range(n):
-            h1 += s[i][j]
-        h.append(h1)
-
-    for j in range(n):
-        v1 = 0
-        for i in range(n):
-            v1 += s[i][j]
-        v.append(v1)
+    possible_squares = [
+            [[8, 1, 6], [3, 5, 7], [4, 9, 2]],
+            [[6, 1, 8], [7, 5, 3], [2, 9, 4]],
+            [[4, 9, 2], [3, 5, 7], [8, 1, 6]],
+            [[2, 9, 4], [7, 5, 3], [6, 1, 8]], 
+            [[8, 3, 4], [1, 5, 9], [6, 7, 2]],
+            [[4, 3, 8], [9, 5, 1], [2, 7, 6]], 
+            [[6, 7, 2], [1, 5, 9], [8, 3, 4]], 
+            [[2, 7, 6], [9, 5, 1], [4, 3, 8]],]
     
-    hDiff = 0
-    vDiff = 0
-    for item in h:
-        hDiff += abs(item - M)
-    for item in v:
-        vDiff += abs(item - M)
-    hDiff += middle
-    vDiff += middle
-    print(hDiff)
-    print(vDiff)
-    return int(max(hDiff, vDiff))
+    k = []
+    for item in possible_squares:
+        d = 0
+        for i in tuple(zip(s, item)):
+            for j in range(3):
+                d += abs(i[1][j]-i[0][j])
+        k.append(d)
+        
+    return min(k)
 
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')
