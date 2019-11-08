@@ -23,7 +23,13 @@ def twoPluses(grid):
             y = item[0][1]
             if x in range(step, xLen-step) and y in range(step, yLen-step):
                 if grid[x][y+step] == 'G' and grid[x][y-step] == 'G' and grid[x+step][y] == 'G' and grid[x-step][y] == 'G':
-                    coordinates[current].append([[x, y], [x, y+step], [x, y-step], [x+step, y], [x-step, y]])
+                    temp = [[x, y]]
+                    for t in range(1, step+1):
+                        temp.append([x, y+t])
+                        temp.append([x, y-t]) 
+                        temp.append([x+t, y])
+                        temp.append([x-t, y])
+                    coordinates[current].append(temp)
 
     for k, v in list(coordinates.items()):
         if v == []:
@@ -41,8 +47,7 @@ def twoPluses(grid):
 
     for i in range(len(coordinatesList)):
         for j in range(i+1, len(coordinatesList)):
-            if len(commonItems(coordinatesList[i][1], coordinatesList[j][1])) > 0:
-                print(coordinatesList[i][0], coordinatesList[j][0])
+            if len(commonItems(coordinatesList[i][1], coordinatesList[j][1])) == 0:
                 m = coordinatesList[i][0] * coordinatesList[j][0]
                 if m > maxValue:
                     maxValue = m
