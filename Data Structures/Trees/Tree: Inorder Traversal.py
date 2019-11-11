@@ -45,3 +45,13 @@ def inOrderIterate(root):
 def inOrder(root):
     inOrderIterate(root)
     print(' '.join(str(s) for s in inOrderList))
+
+tree = BinarySearchTree()
+t = int(input())
+
+arr = list(map(int, input().split()))
+
+for i in range(t):
+    tree.create(arr[i])
+
+inOrder(tree.root)

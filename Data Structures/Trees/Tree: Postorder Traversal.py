@@ -45,3 +45,13 @@ def postOrderIterate(root):
 def postOrder(root):
     postOrderIterate(root)
     print(' '.join(str(s) for s in postOrderList))
+
+tree = BinarySearchTree()
+t = int(input())
+
+arr = list(map(int, input().split()))
+
+for i in range(t):
+    tree.create(arr[i])
+
+postOrder(tree.root)
