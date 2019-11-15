@@ -34,35 +34,12 @@ class BinarySearchTree:
                 else:
                     break
 
-def findPath(root, path, k): 
-    if root is None: 
-        return False
-    path.append(root) 
-  
-    if root.info == k : 
-        return True
+def height(root):
+    if root is None:
+        return -1
+    else:
+        return max(height(root.left), height(root.right)) + 1
 
-    if ((root.left != None and findPath(root.left, path, k)) or
-            (root.right!= None and findPath(root.right, path, k))): 
-        return True 
-
-    path.pop() 
-    return False
-
-
-def lca(root, v1, v2):
-    path1 = [] 
-    path2 = [] 
-
-    if (not findPath(root, path1, v1) or not findPath(root, path2, v2)): 
-        return -1 
-
-    i = 0 
-    while(i < len(path1) and i < len(path2)): 
-        if path1[i] != path2[i]: 
-            break
-        i += 1
-    return path1[i-1] 
 
 
 tree = BinarySearchTree()
@@ -73,7 +50,4 @@ arr = list(map(int, input().split()))
 for i in range(t):
     tree.create(arr[i])
 
-v = list(map(int, input().split()))
-
-ans = lca(tree.root, v[0], v[1])
-print (ans.info)
+print(height(tree.root))

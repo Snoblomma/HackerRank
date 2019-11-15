@@ -24,4 +24,3 @@ for line in range(t):
         queue.pop()
     else:
         print(queue.peek())
-

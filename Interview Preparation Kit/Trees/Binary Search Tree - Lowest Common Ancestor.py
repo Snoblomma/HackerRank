@@ -1,5 +1,5 @@
 class Node:
-    def __init__(self, info):
+    def __init__(self, info): 
         self.info = info  
         self.left = None  
         self.right = None 
@@ -8,18 +8,11 @@ class Node:
     def __str__(self):
         return str(self.info) 
 
-def preOrder(root):
-    if root == None:
-        return
-    print (root.info, end=" ")
-    preOrder(root.left)
-    preOrder(root.right)
-    
 class BinarySearchTree:
     def __init__(self): 
         self.root = None
 
-    def insert(self, val):
+    def create(self, val):  
         if self.root == None:
             self.root = Node(val)
         else:
@@ -41,12 +34,46 @@ class BinarySearchTree:
                 else:
                     break
 
+def findPath(root, path, k): 
+    if root is None: 
+        return False
+    path.append(root) 
+  
+    if root.info == k : 
+        return True
+
+    if ((root.left != None and findPath(root.left, path, k)) or
+            (root.right!= None and findPath(root.right, path, k))): 
+        return True 
+
+    path.pop() 
+    return False
+
+
+def lca(root, v1, v2):
+    path1 = [] 
+    path2 = [] 
+
+    if (not findPath(root, path1, v1) or not findPath(root, path2, v2)): 
+        return -1 
+
+    i = 0 
+    while(i < len(path1) and i < len(path2)): 
+        if path1[i] != path2[i]: 
+            break
+        i += 1
+    return path1[i-1] 
+
+
 tree = BinarySearchTree()
 t = int(input())
 
 arr = list(map(int, input().split()))
 
 for i in range(t):
-    tree.insert(arr[i])
+    tree.create(arr[i])
 
-preOrder(tree.root)
+v = list(map(int, input().split()))
+
+ans = lca(tree.root, v[0], v[1])
+print (ans.info)
