@@ -8,10 +8,15 @@ def maxElement(a):
             if el > maxEl:
                 maxEl = el
         elif item[0] == 2:
-            # res = res[1::]
+            s = res[-1]
             del res[-1]
+            if s == maxEl:
+                if len(res) > 0:
+                    maxEl = max(res)
+                else:
+                    maxEl = 0
         elif item[0] == 3:
-            print(max(res))
+            print(maxEl)
         # print(res)
 
 if __name__ == '__main__':
