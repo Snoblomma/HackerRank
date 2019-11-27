@@ -12,15 +12,15 @@ def pythagoreanTriple(a):
     b = 0
     c = 0
     if a%2 == 1:
-        b = (a**2-1)/2
-        c = b+1
+        b = int((a**2-1)/2)
+        c = int(b)+1
     else:
         m = a/2
-        b = m**2 - 1
-        c = m**2 + 1
+        b = int(m**2 - 1)
+        c = int(m**2 + 1)
 
-    res.append(int(b))
-    res.append(int(c))
+    res.append(b)
+    res.append(c)
     return res
 
 if __name__ == '__main__':
