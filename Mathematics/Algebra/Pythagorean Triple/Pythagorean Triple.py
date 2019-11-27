@@ -6,16 +6,15 @@ import random
 import re
 import sys
 
-# Complete the pythagoreanTriple function below.
 def pythagoreanTriple(a):
     res = [a]
     b = 0
     c = 0
     if a%2 == 1:
-        b = int((a**2-1)/2)
+        b = int(int((int(a)**2-1))//2)
         c = int(b)+1
     else:
-        m = a/2
+        m = int(a/2)
         b = int(m**2) - 1
         c = int(m**2) + 1
 
