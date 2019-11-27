@@ -16,8 +16,8 @@ def pythagoreanTriple(a):
         c = int(b)+1
     else:
         m = a/2
-        b = int(m**2 - 1)
-        c = int(m**2 + 1)
+        b = int(m**2) - 1
+        c = int(m**2) + 1
 
     res.append(b)
     res.append(c)
