@@ -2,17 +2,16 @@
 
 import os
 import sys
+import math
 
 d = [6, 2, 4, 8]
 
 
 def solve(n):
-    i = 0
-    while 2**i <= n:
-        i+=1
+    i = int((math.log(n, 2)))
     
     lastDigits = 0
-    for s in range(i):
+    for s in range(i+1):
         k = 0
         for j in range(n+1):
             power = (2**s + 2*j) 
