@@ -8,7 +8,7 @@ d = [6, 2, 4, 8]
 
 
 def solve(n):
-    i = int((math.log(n, 2)))
+    i = int(math.log(n, 2))
     
     lastDigits = 0
     for s in range(i+1):
