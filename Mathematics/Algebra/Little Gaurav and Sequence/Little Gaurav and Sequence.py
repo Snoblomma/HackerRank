@@ -8,15 +8,19 @@ d = [6, 2, 4, 8]
 
 
 def solve(n):
-    i = int(math.log(n, 2))
-    
+    i = int((math.log(n, 2)))
     lastDigits = 0
+
+    m = 0
+    for j in range(n+1):
+        m += 2**(2*j)
+    
+    m = int(str(m)[-1])
+
     for s in range(i+1):
-        k = 0
-        for j in range(n+1):
-            power = (2**s + 2*j) 
-            k += d[power%4]
+        k = m *(2**(2**(s)))
         lastDigits += int(str(k)[-1])
+
     return str(lastDigits)[-1]
 
 if __name__ == '__main__':
