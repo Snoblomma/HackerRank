@@ -8,12 +8,10 @@ def solve(c):
         newList[item] = c.count(item)
     all1 = 0
     for i in range(len(c)):
-        j1 = 0
+        j1 = all1 - i
         if i in newList:
-            j1 = newList[i] + all1 - i
+            j1 += newList[i] 
             all1 += newList[i]
-        else:
-            j1 = all1 - i
 
         if j1 <= 0:
             return 0
