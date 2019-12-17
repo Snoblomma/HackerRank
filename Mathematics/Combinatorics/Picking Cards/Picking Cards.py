@@ -1,24 +1,28 @@
 import os
+import copy
 
 def solve(c):
     res = 1
-    s = set(c)
-    newList = {}
-    for item in s:
-        newList[item] = c.count(item)
-    all1 = 0
-    for i in range(len(c)):
-        j1 = all1 - i
-        if i in newList:
-            j1 += newList[i] 
-            all1 += newList[i]
+    print(c)
+    csorted = copy.deepcopy(sorted(c))
+    print(csorted)
+    lasts = [1]
 
-        if j1 <= 0:
+    last = 1
+
+
+    for i in range(1, len(csorted)):
+        if csorted[i] > i:
             return 0
-        else:
-            res *= j1
+        elif csorted[i-1] == csorted[i]:
+            last += 1
+        res = res * last
+        lasts.append(last)
+    print('LASTs')
+    print(lasts)
 
     return int(res%1000000007)
+    # return res
 
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')
