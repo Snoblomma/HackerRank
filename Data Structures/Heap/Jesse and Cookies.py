@@ -3,13 +3,15 @@
 import os
 import sys
 
-#
-# Complete the cookies function below.
-#
 def cookies(k, A):
-    #
-    # Write your code here.
-    #
+    operations = 0
+    while len(A) > 1 and A[0] < k:
+        t = [A[0] + 2*A[1]]
+        A = t + A[2:]
+        A.sort()
+        operations += 1
+        print(A)
+    return operations
 
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')
