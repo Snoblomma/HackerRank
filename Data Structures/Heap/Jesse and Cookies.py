@@ -5,6 +5,7 @@ import sys
 
 def cookies(k, A):
     operations = 0
+    A.sort()
     while len(A) > 0:
         if A[0] < k:
             if len(A) == 1:
@@ -14,7 +15,6 @@ def cookies(k, A):
                 A = t + A[2:]
                 A.sort()
                 operations += 1
-                print(A)
         else:
             return operations
            
