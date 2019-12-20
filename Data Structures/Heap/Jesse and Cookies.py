@@ -5,12 +5,19 @@ import sys
 
 def cookies(k, A):
     operations = 0
-    while len(A) > 1 and A[0] < k:
-        t = [A[0] + 2*A[1]]
-        A = t + A[2:]
-        A.sort()
-        operations += 1
-        print(A)
+    while len(A) > 0:
+        if A[0] < k:
+            if len(A) == 1:
+                return -1
+            else:
+                t = [A[0] + 2*A[1]]
+                A = t + A[2:]
+                A.sort()
+                operations += 1
+                print(A)
+        else:
+            return operations
+           
     return operations
 
 if __name__ == '__main__':
