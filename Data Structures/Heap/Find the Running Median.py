@@ -6,7 +6,6 @@ import statistics
 
 
 def runningMedian(a):
-    a.sort()
     medians = []
     for n in range(1, len(a)+1):
         m = a[:n]
