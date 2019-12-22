@@ -6,12 +6,37 @@ import statistics
 
 
 def runningMedian(a):
+    minHeap = []
+    maxHeap = []
     medians = []
-    for n in range(1, len(a)+1):
-        m = a[:n]
-        # print(m)
-        # print(statistics.median(m))
-        medians.append(float(statistics.median(m)))
+    currentMedian = 0
+
+    for n in range(0, len(a)):
+        current = a[n]
+        if current > currentMedian:
+            minHeap.append(current)
+        elif current <= currentMedian:
+            maxHeap.append(current)
+
+        if len(maxHeap) > len(minHeap):
+            s = max(maxHeap)
+            minHeap.append(s)
+            maxHeap.remove(s)
+        elif len(minHeap) > len(maxHeap):
+            s = min(minHeap)
+            maxHeap.append(s)
+            minHeap.remove(s)
+
+        if len(minHeap) == len(maxHeap):
+            currentMedian = (min(minHeap)+ max(maxHeap))/2           
+        elif len(minHeap) > len(maxHeap):
+            currentMedian = min(minHeap)
+        else:
+            currentMedian = max(maxHeap)
+
+        medians.append(currentMedian)
+
+    print(medians)
     return medians
 
 if __name__ == '__main__':
