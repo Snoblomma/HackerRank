@@ -1,42 +1,49 @@
 #!/bin/python3
 
 import os
-import sys
-import statistics
+import heapq
 
 
 def runningMedian(a):
     minHeap = []
     maxHeap = []
     medians = []
+    heapq.heapify(minHeap)
     currentMedian = 0
 
     for n in range(0, len(a)):
         current = a[n]
         if current > currentMedian:
-            minHeap.append(current)
+            # minHeap.append(current)
+            heapq.heappush(minHeap, current)
         elif current <= currentMedian:
             maxHeap.append(current)
 
+
         if len(maxHeap) > len(minHeap):
             s = max(maxHeap)
-            minHeap.append(s)
+            # minHeap.append(s)
+            heapq.heappush(minHeap, s)
             maxHeap.remove(s)
         elif len(minHeap) > len(maxHeap):
-            s = min(minHeap)
+            s = minHeap[0]
+            # print(minHeap)
             maxHeap.append(s)
-            minHeap.remove(s)
+            # minHeap.remove(s)
+            heapq.heappop(minHeap)
+            # print(minHeap)
+            
 
         if len(minHeap) == len(maxHeap):
-            currentMedian = (min(minHeap)+ max(maxHeap))/2           
+            currentMedian = (minHeap[0]+ max(maxHeap))/2           
         elif len(minHeap) > len(maxHeap):
-            currentMedian = min(minHeap)
+            currentMedian = minHeap[0]
         else:
             currentMedian = max(maxHeap)
 
         medians.append(currentMedian)
 
-    print(medians)
+    # print(medians)
     return medians
 
 if __name__ == '__main__':
