@@ -10,7 +10,6 @@ def print_rangoli(size):
         d = s[::-1]
         s = s[:-1] + d
         list.append(s)
-        #print(s)
 
     # top rows
     for i in range(size-1):

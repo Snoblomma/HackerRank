@@ -6,7 +6,6 @@ import random
 import re
 import sys
 
-# Complete the lonelyinteger function below.
 def lonelyinteger(a):
     res = ''
     myset = set(a)

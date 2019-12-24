@@ -6,7 +6,6 @@ import random
 import re
 import sys
 
-# Complete the maximizingXor function below.
 def maximizingXor(l, r):
     maxVal = 0
     

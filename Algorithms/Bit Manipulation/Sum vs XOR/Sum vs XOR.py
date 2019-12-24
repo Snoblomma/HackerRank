@@ -6,7 +6,6 @@ import random
 import re
 import sys
 
-# Complete the sumXor function below.
 def sumXor(n):
     if n == 0:
         return 1

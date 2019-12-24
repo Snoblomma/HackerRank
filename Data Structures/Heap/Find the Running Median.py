@@ -14,7 +14,6 @@ def runningMedian(a):
     for n in range(0, len(a)):
         current = a[n]
         if current > currentMedian:
-            # minHeap.append(current)
             heapq.heappush(minHeap, current)
         elif current <= currentMedian:
             maxHeap.append(current)
@@ -22,16 +21,11 @@ def runningMedian(a):
 
         if len(maxHeap) > len(minHeap):
             s = max(maxHeap)
-            # minHeap.append(s)
             heapq.heappush(minHeap, s)
             maxHeap.remove(s)
         elif len(minHeap) > len(maxHeap):
-            s = minHeap[0]
-            # print(minHeap)
-            maxHeap.append(s)
-            # minHeap.remove(s)
+            maxHeap.append(minHeap[0])
             heapq.heappop(minHeap)
-            # print(minHeap)
             
 
         if len(minHeap) == len(maxHeap):
@@ -43,7 +37,6 @@ def runningMedian(a):
 
         medians.append(currentMedian)
 
-    # print(medians)
     return medians
 
 if __name__ == '__main__':
