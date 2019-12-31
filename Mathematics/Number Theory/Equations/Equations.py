@@ -13,7 +13,6 @@ def fact(n):
     return res
 
 def divisorsCount(n):
-    print('count of ' + str(n))
     count = 0
     for i in range(1, int(n/2)+1):
         if(n%i == 0):
@@ -23,13 +22,10 @@ def divisorsCount(n):
     return count
 
 def solve(n):
-    # f = fact(n)*2
-    # d = divisorsCount(f)
-    # print('divisors')
-    # print(d)
-    res = ((n-1)**2) + 1
-    # res = d % 1000007
-    return res % 1000007
+    f = fact(n)*2
+    d = divisorsCount(f)
+    res = d % 1000007
+    return res
 
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')
