@@ -42,7 +42,6 @@ public class Solution {
 		
 		for (int i = 0; i < c.length; i++) {
 			for (int j = 0; j < c.length-1; j++) {
-				//System.err.println("Comparing " + c[j][i] + " " + c[j+1][i]);
 				if(c[j][i] > c[j+1][i]){
 					return "NO";
 				}

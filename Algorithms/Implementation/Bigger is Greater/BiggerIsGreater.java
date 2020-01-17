@@ -38,15 +38,9 @@ public class Solution {
 
 			for (int j = 0; j < sort.length; j++) {
 				if (sort[j] > temp) {
-					//second = String.valueOf(temp);
 					second = String.valueOf(sort[j]);
 
-					//System.out.println("second1: " + second);
-					
-					//System.out.println("sort j: " + sort[j]);
-
 					for (int j2 = 0; j2 < sort.length; j2++) {
-						//System.out.println("sort j2: " + sort[j2]);
 						if (j2!=j) {
 							second = second + String.valueOf(sort[j2]);
 						}				

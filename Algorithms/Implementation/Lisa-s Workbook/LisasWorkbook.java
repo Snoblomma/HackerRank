@@ -30,7 +30,6 @@ public class Solution {
 
 		for (int i = 0; i < n; i++) {
 			for (int j = 0; j < t[i]; j++) {
-				// System.out.println("Processing: i " + i + " j " + j);
 				array[s][0] = i + 1;
 				array[s][1] = j + 1;
 				s++;
