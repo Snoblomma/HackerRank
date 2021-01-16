@@ -1,39 +1,32 @@
 #!/bin/python3
 
-from itertools import combinations
 import math
 import os
-import random
-import re
 import sys
 
 
-def find_pairs(lst):
-    res = []
-    for var in combinations(lst, 2):
-        res.append([var[0], var[1]])
+def find_chosen_one(a, n):
+    pre = [0]*10000000
+    suf = [0]*10000000
 
-    return res
+    if n == 1:
+        return a[0]+1
 
+    for i in range(n):
+        pre[i+1] = math.gcd(a[i], pre[i])
 
-def find_chosen_one(a):
-    pairs = find_pairs(a)
+    for j in range(n, 0, -1):
+        suf[j] = math.gcd(suf[j+1], a[j-1])
 
-    for pair in pairs:
-        gcd = math.gcd(pair[0], pair[1])
-        non_divided = 0
-        for item in a:
-            if item % gcd != 0:
-                non_divided += 1
-        
-        if non_divided == 1:
+    for i in range(1, n+1):
+        gcd = math.gcd(pre[i-1], suf[i+1])
+        if a[i-1] % gcd != 0:
             return gcd
-    
-    return 0
+
 
 if __name__ == '__main__':
     n = int(input())
 
     a = list(map(int, input().rstrip().split()))
 
-    print(find_chosen_one(a))
+    print(find_chosen_one(a, len(a)))
