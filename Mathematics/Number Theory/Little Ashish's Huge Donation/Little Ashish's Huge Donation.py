@@ -10,6 +10,18 @@ def solve(x):
 
     print(i - 1)
 
+    # or 
+
+    # count = 0
+
+    # for j in range(1, x+1):
+    #     x -= j*j
+    #     if x < 0:
+    #         break
+    #     else:
+    #         count += 1
+
+    # return count
 if __name__ == '__main__':
     t = int(input())
 
