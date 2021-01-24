@@ -3,27 +3,34 @@
 import os
 import sys
 
-def solve(x):
-    i = 1
-    while ((i*(i+1)*(2*i+1))/6) <= x:
-        i += 1
+def binary_search(low, high, x): 
+    if high >= low: 
+  
+        mid = (high + low) // 2
 
-    print(i - 1)
+        k = (mid * (mid + 1) * (2 * mid + 1)) / 6
+        ks = ((mid + 1) * (mid + 2) * (2 * (mid + 1) + 1)) / 6
 
-    # or 
+        if k <= x and ks > x:
+            return mid 
+        elif k > x: 
+            return binary_search(low, mid - 1, x) 
+        else: 
+            return binary_search(mid + 1, high, x) 
+  
+    else: 
+        return -1
 
-    # count = 0
-
-    # for j in range(1, x+1):
-    #     x -= j*j
-    #     if x < 0:
-    #         break
-    #     else:
-    #         count += 1
-
-    # return count
 if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
     t = int(input())
 
     for t_itr in range(t):
-        solve(int(input()))
+        x = int(input())
+
+        result = binary_search(0, 10**16, x)
+
+        fptr.write(str(result) + '\n')
+
+    fptr.close()
