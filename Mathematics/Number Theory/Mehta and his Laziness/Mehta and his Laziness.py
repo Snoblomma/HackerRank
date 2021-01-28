@@ -3,23 +3,23 @@ import os
 import sys
 
 def divisorGenerator(n):
-    large_divisors = []
-    for i in range(1, int(math.sqrt(n) + 1)):
+    divisors = [1]
+    for i in range(2, int(math.sqrt(n)) + 1):
         if n % i == 0:
-            yield i
-            if i*i != n:
-                large_divisors.append(n / i)
-    for divisor in reversed(large_divisors[1:]):
-        yield divisor
+            divisors.append(i)
+            if(n // i != i):
+                divisors.append(n//i)
+    divisors.sort()
+    
+    return divisors
 
 
 def solve(n):
-    divisors = list(divisorGenerator(n))
+    divisors = divisorGenerator(n)
     square_divisors = 0
     
-    for d in divisors:
-        k = int(math.sqrt(d))
-        if k**2 == d and d%2 == 0:
+    for i in divisors:
+        if i%2 == 0 and math.sqrt(i) == math.ceil(math.sqrt(i)):
             square_divisors += 1
 
     if square_divisors == 0:
