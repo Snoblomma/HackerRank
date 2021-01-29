@@ -27,7 +27,7 @@ def solve(n):
     return str(square_divisors) + '/' + str(len(divisors))
 
 if __name__ == '__main__':
-    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+    # fptr = open(os.environ['OUTPUT_PATH'], 'w')
 
     t = int(input())
 
@@ -36,6 +36,7 @@ if __name__ == '__main__':
 
         result = solve(n)
 
-        fptr.write(result + '\n')
+        # fptr.write(result + '\n')
+        print(result)
 
-    fptr.close()
+    # fptr.close()
