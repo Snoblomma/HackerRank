@@ -2,9 +2,25 @@
 
 import os
 import sys
+from math import gcd
 
-# Complete the solve function below.
 def solve(a, queries):
+    n = len(a)
+
+    g = a[1] if n > 1 else a[0]
+
+    for i in range(2, n):
+        g = gcd(g, a[i])
+
+    res = []
+        
+    for p in queries:
+        if n == 1:
+            res.append(a[0] + p)
+        else:
+            res.append(gcd(g, a[0] + p))
+            
+    return res
 
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')
