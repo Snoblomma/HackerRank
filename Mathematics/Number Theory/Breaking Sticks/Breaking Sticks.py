@@ -1,38 +1,38 @@
 #!/bin/python3
 
 import math
-import os
-import random
-import re
-import sys
 
-def breaks(a):
-    count = 0
-    counter = a
+
+def divisor(number):
+    for i in range(2, math.ceil(math.sqrt(number))+1):
+        if (number % i == 0):
+            return number // i
+
+    return 1
+
+
+def breaks(n):
+    count = n
+    a = n
     while a > 1:
-        if a % counter == 0:
-            count += counter
-            a = counter
-            counter = a - 1
-        else:
-            counter -= 1
-    return count 
+        d = divisor(a)
+        count += d
+        a = d
+    return count
+
 
 def longestSequence(a):
     s = 0
     for item in a:
         s += breaks(item)
-    return s + 1 if len(a) > 1 else s
+    return s
+
 
 if __name__ == '__main__':
-    fptr = open(os.environ['OUTPUT_PATH'], 'w')
-
     n = int(input())
 
     a = list(map(int, input().rstrip().split()))
 
     result = longestSequence(a)
 
-    fptr.write(str(result) + '\n')
-
-    fptr.close()
+    print(result)
