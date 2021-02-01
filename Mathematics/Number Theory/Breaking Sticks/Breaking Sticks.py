@@ -12,6 +12,8 @@ def divisor(number):
 
 
 def breaks(n):
+    if n == 1:
+        return 1
     count = n
     a = n
     while a > 1:
