@@ -11,7 +11,7 @@ def divisible_by_4(a1, a2, n):
     if index1 == -1:
         return False
     else:
-        test = n.replace(a1, '')
+        test = n.replace(a1, '', 1)
         index2 = test.find(a2)
         if index2 == -1:
             return False
@@ -20,7 +20,7 @@ def divisible_by_4(a1, a2, n):
             if l in combos8:
                 return True
             else:
-                t = test.replace(a2, '')
+                t = test.replace(a2, '', 1)
                 if t == '0':
                     return False
                 else:
@@ -32,7 +32,7 @@ def divisible_by_8(a1, a2, n):
     if index1 == -1:
         return False
     else:
-        test = n.replace(a1, '')
+        test = n.replace(a1, '', 1)
         index2 = test.find(a2)
         if index2 == -1:
             return False
