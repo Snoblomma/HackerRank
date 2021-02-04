@@ -7,17 +7,14 @@ combos8 = ['16', '24', '23', '04', '48', '56', '46', '27', '08', '88', '69']
 combos4 = ['00','02','04','06','08','12','16','23','24','27','28','29','36','44','46','48','52','56','67','68','69','88']
 
 def divisible_by_4(a1, a2, n):
-    index1 = n.find(a1)
-    if index1 == -1:
+    if n.find(a1) == -1:
         return False
     else:
         test = n.replace(a1, '', 1)
-        index2 = test.find(a2)
-        if index2 == -1:
+        if test.find(a2) == -1:
             return False
         else: 
-            l = a1 + a2
-            if l in combos8:
+            if a1 + a2 in combos8:
                 return True
             else:
                 t = test.replace(a2, '', 1)
