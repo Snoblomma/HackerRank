@@ -4,13 +4,19 @@ import os
 import sys
 
 
-def number(primes, i):
+def count_appearances(primes, i):
     num = {}
+    # num = 0
     for prime in primes:
         num[prime] = 0
         while i % prime == 0:
             i = i // prime
             num[prime] += 1
+            # num += 1
+
+    for key in num:
+        num[key] *= 2
+
     return num
 
 
@@ -34,10 +40,11 @@ def divisorsCount(n):
     count = 0
     for i in range(2, n + 1):
         primes = primeFactors(i)
-        num = number(primes, i)
+        num = count_appearances(primes, i)
+        # count += num
         print(i)
-        print(primes)
         print(num)
+        # print(num)
 
     return count
 
@@ -54,6 +61,7 @@ if __name__ == '__main__':
     n = int(input())
 
     result = solve(n)
+    print(result)
 
     # fptr.write(str(result) + '\n')
 
