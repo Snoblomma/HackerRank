@@ -3,24 +3,27 @@
 import os
 import sys
 
+def count_divisors(num):
+    count = 1
+    for key in num:
+        count = count * (2 * num[key] + 1)
+    
+    return count
 
-def count_appearances(primes, i):
-    num = {}
-    # num = 0
+def count_appearances(num, primes, i):
+
     for prime in primes:
-        num[prime] = 0
         while i % prime == 0:
             i = i // prime
-            num[prime] += 1
-            # num += 1
-
-    for key in num:
-        num[key] *= 2
+            if prime in num:
+                num[prime] += 1
+            else:
+                num[prime] = 1
 
     return num
 
 
-def primeFactors(n):
+def prime_factors(n):
     primes = []
     for i in range(2, n + 1):
         if n % i == 0:
@@ -36,21 +39,19 @@ def primeFactors(n):
     return primes
 
 
-def divisorsCount(n):
-    count = 0
+def divisors_count(n):
+    num = {}
     for i in range(2, n + 1):
-        primes = primeFactors(i)
-        num = count_appearances(primes, i)
-        # count += num
-        print(i)
-        print(num)
-        # print(num)
+        primes = prime_factors(i)
+        num = count_appearances(num, primes, i)
+
+    count = count_divisors(num)
 
     return count
 
 
 def solve(n):
-    d = divisorsCount(n)
+    d = divisors_count(n)
     res = d % 1000007
     return res
 
