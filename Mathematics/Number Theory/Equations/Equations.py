@@ -11,7 +11,6 @@ def count_divisors(num):
     return count
 
 def prime_factors(factors, n):
-    primes = []
     for i in range(2, n + 1):
         if n % i == 0:
             isprime = 1
@@ -21,13 +20,13 @@ def prime_factors(factors, n):
                     break
                 
             if isprime == 1:
-                primes.append(i)
                 while n % i == 0:
                     n = n // i
                     if i in factors:
                         factors[i] += 1
                     else:
                         factors[i] = 1
+                
     return factors
 
 def divisors_count(n):
