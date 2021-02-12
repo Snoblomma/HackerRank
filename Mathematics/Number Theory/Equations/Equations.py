@@ -10,7 +10,8 @@ def count_divisors(num):
     
     return count
 
-def prime_factors(factors, n):
+def prime_factors(factors, n, count):
+    # count = 1
     for i in range(2, n + 1):
         if n % i == 0:
             isprime = 1
@@ -26,45 +27,20 @@ def prime_factors(factors, n):
                         factors[i] += 1
                     else:
                         factors[i] = 1
-                
-    return factors
-
-def prime_factors_new(new, n, i):
-    print('-------')
-    print(new)
-    for i in new.keys():
-        new[i] *=2
-
-    print(new)
-    if n % i == 0:
-        isprime = 1
-        for j in range(2, (i // 2 + 1)):
-            if i % j == 0:
-                isprime = 0
-                break
-            
-        if isprime == 1:
-            while n % i == 0:
-                n = n // i
-                if i in new:
-                    new[i] += 1
-                else:
-                    new[i] = 1
-                
-    return new
+                count = count * (2 * factors[i] + 1)
+    
+    return factors, count
 
 def divisors_count(n):
     factors = {}
-    new = {}
-    for i in range(2, n + 1):
-        factors = prime_factors(factors, i)
+    count = 1
 
-    for i in range(2, n):
-        new = prime_factors_new(new, n + 1, i)
+    for i in range(2, n + 1):
+        factors, count = prime_factors(factors, i, count)
+        print('Count ' + str(count))
+        print(factors)
 
     count = count_divisors(factors)
-    print(factors)
-    print(new)
     return count
 
 
