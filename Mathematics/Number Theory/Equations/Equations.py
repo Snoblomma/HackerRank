@@ -24,11 +24,12 @@ def prime_factors(factors, n):
     return factors
 
 def divisors_count(n):
-    test = {}
+    factors = {}
+    
     for i in range(2, n + 1):
-        test = prime_factors(test, i)
+        factors = prime_factors(factors, i)
 
-    count = count_divisors(test)
+    count = count_divisors(factors)
 
     return count
 
