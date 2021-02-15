@@ -2,15 +2,15 @@
 
 import os
 import sys
+from fractions import gcd
 
-def get_gcds(a, b):
-
-def is_int_mult(c, gcds):
+def is_int_mult(c, g):
+    return c % g == 0
 
 def solve(a, b, c):
     if c <= a or c <=b:
-        gcds = get_gcds(a, b)
-        if is_int_mult(c, gcds)
+        g = gcd(a, b)
+        if is_int_mult(c, g):
             return 'YES'
     
     return 'NO'
