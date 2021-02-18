@@ -22,7 +22,7 @@ def solve(n, k):
     first = div_fact(top, bott)
     res = div_fact(first, k)
 
-    return res
+    return abs(res) % 1000000000
 
 
 if __name__ == '__main__':
