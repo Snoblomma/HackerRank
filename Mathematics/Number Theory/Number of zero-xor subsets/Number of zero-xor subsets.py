@@ -4,7 +4,7 @@ import os
 import sys
 
 
-def solve(n):g
+def solve(n):
     # p = (pow(2, n) - n) % 1000000007
     p = 1000000007
     p1 = (pow(2, n, p-1)-n % (p-1)) % (p-1)
