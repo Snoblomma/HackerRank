@@ -9,8 +9,7 @@ def find(x, y, A):
     if x > y:
         return 1
     ans = pow(A[x-1], find(x+1, y, A))
-    last_digit = ans % 10
-    return last_digit
+    return ans % 10
 
 def solve(arr, queries):
     result = []
