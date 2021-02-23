@@ -3,13 +3,14 @@
 import os
 import sys
 
-
-
 def find(x, y, A):
-    if x > y:
-        return 1
-    ans = pow(A[x-1], find(x+1, y, A))
-    return ans % 10
+    if x < len(A) and A[x] == 0 and x != y:
+        return 'Odd'
+    
+    if A[x-1] % 2 == 0:
+        return'Even'
+    
+    return 'Odd'
 
 def solve(arr, queries):
     result = []
@@ -17,7 +18,7 @@ def solve(arr, queries):
         x = q[0]
         y = q[1]
         ans = find(x, y, arr)
-        result.append('Odd' if ans%2 == 1 else 'Even')
+        result.append(ans)
     return result
 
 if __name__ == '__main__':
