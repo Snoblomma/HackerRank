@@ -8,7 +8,7 @@ def find(x, y, A):
         return 'Odd'
     
     if A[x-1] % 2 == 0:
-        return'Even'
+        return 'Even'
     
     return 'Odd'
 
