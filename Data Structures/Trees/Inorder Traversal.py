@@ -1,57 +1,42 @@
+from typing import List
+
 class Node:
-    def __init__(self, info): 
-        self.info = info  
+    def __init__(self, value): 
+        self.value = value 
         self.left = None  
         self.right = None 
-        self.level = None 
 
     def __str__(self):
         return str(self.info) 
 
-class BinarySearchTree:
-    def __init__(self): 
-        self.root = None
+def swap(root: Node, acc: List[Node], k: int, depth=1): 
+    if depth % k == 0: 
+        root.left, root.right = root.right, root.left
 
-    def create(self, val):  
-        if self.root == None:
-            self.root = Node(val)
-        else:
-            current = self.root
-         
-            while True:
-                if val < current.info:
-                    if current.left:
-                        current = current.left
-                    else:
-                        current.left = Node(val)
-                        break
-                elif val > current.info:
-                    if current.right:
-                        current = current.right
-                    else:
-                        current.right = Node(val)
-                        break
-                else:
-                    break
+    if root.left is not None:
+        swap(root.left, acc, k, depth + 1)
 
-inOrderList = []
+    print(root.value, end=' ')
 
-def inOrderIterate(root):
-    if root:
-        inOrderIterate(root.left) 
-        inOrderList.append(root.info)
-        inOrderIterate(root.right) 
-        
-def inOrder(root):
-    inOrderIterate(root)
-    print(' '.join(str(s) for s in inOrderList))
+    if root.right is not None:
+        swap(root.right, acc, k, depth + 1)
 
-tree = BinarySearchTree()
-t = int(input())
+def main(): 
+    n = int(input()) 
+    nodes = [Node(i) for i in range(1, n + 1)]
 
-arr = list(map(int, input().split()))
+    for i in range(n):
+        left, right = map(int, input().split())
+        if left != -1:
+            nodes[i].left = nodes[left - 1]
+        if right != -1:
+            nodes[i].right = nodes[right - 1]
 
-for i in range(t):
-    tree.create(arr[i])
+    root = nodes[0]
 
-inOrder(tree.root)
+    t = int(input())
+    for _ in range(t):
+        k = int(input())
+        acc = []
+        swap(root, acc, k)
+        print(*acc)
