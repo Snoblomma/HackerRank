@@ -1,31 +1,22 @@
 #!/bin/python3
 
-import math
 import os
-import random
-import re
-import sys
 
 def arrayManipulation(n, queries):
     array = [0] * (n + 1)
-    maxm = 0
+    max_sum = 0
     x = 0
 
-    for query in queries:
-        a = query[0]
-        b = query[1]
-        k = query[2]
-
+    for a, b, k in queries:
         array[a] += k
         if b+1 <= n:
             array[b+1] -= k
 
-    for i in range(1, n):
-        x = x + array[i]
-        if maxm < x:
-            maxm = x
+    for i in range(n):
+        x += array[i]
+        max_sum = max(max_sum, x)
 
-    return maxm
+    return max_sum
 
 
 if __name__ == '__main__':
