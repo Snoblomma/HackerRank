@@ -3,14 +3,14 @@
 import os
 
 def arrayManipulation(n, queries):
-    array = [0] * (n + 1)
+    array = [0] * n
     max_sum = 0
     x = 0
 
     for a, b, k in queries:
-        array[a] += k
-        if b+1 <= n:
-            array[b+1] -= k
+        array[a - 1] += k
+        if b < n:
+            array[b] -= k
 
     for i in range(n):
         x += array[i]
