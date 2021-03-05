@@ -8,10 +8,14 @@ def median(a,x):
         num = x[i]
         if op == 'a':
             l.append(num)
+            print(statistics.median(l))
         else:
             if num in l:
                 l.remove(num)
-                print(statistics.median(l))
+                if len(l) > 0:
+                    print(statistics.median(l))
+                else:
+                    print('Wrong!')
             else:
                 print('Wrong!')
 
