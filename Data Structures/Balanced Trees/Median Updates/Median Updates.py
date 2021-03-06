@@ -1,8 +1,17 @@
+#!/bin/python
+
 import statistics
 import heapq
 
 
-#!/bin/python
+def print_median(median, min_heap, max_heap):
+    if median != None:
+        print(median)
+    else:
+        a = heapq.nlargest(1, max_heap)
+        b = heapq.nsmallest(1, min_heap)
+        print((a + b) / 2)
+
 def median(a, x):
     l = []
     max_heap = heapq._heapify_max([])
@@ -22,12 +31,18 @@ def median(a, x):
                 else:
                     heapq.heappush(min_heap, m)
                 
-                if median != None:
-                    print(median)
+                print_median(median, min_heap, max_heap)
+
+            elif num > heapq.nsmallest(1, min_heap):
+                m = heapq.nsmallest(1, min_heap)
+                heapq.heappop(min_heap)
+                if len(min_heap) == len(max_heap):
+                    median = m
                 else:
-                    a = heapq.nlargest(1, max_heap)
-                    b = heapq.nsmallest(1, min_heap)
-                    print((a + b) / 2)
+                    heapq.heappush(max_heap, m)
+
+                print_median(median, min_heap, max_heap)
+            
             elif num == heapq.nlargest(1, max_heap) or num == heapq.nsmallest(1, min_heap):
                 median = num
                 print(median)
