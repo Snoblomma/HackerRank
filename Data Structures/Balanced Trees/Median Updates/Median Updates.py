@@ -4,46 +4,51 @@ import statistics
 import heapq
 
 
-def print_median(median, min_heap, max_heap):
+def print_median(median, largest, smallest):
     if median != None:
         print(median)
     else:
-        a = heapq.nlargest(1, max_heap)
-        b = heapq.nsmallest(1, min_heap)
-        print((a + b) / 2)
+        # a = heapq.nlargest(1, right_heap)
+        # b = heapq.nsmallest(1, left_heap)
+        print((largest + smallest) / 2)
 
 def median(a, x):
     l = []
-    max_heap = heapq._heapify_max([])
-    min_heap = heapq.heapify([])
+    # right_heap = heapq._heapify_max([])
+    # left_heap = heapq.heapify([])
+    left_heap = []
+    right_heap = []
+    largest_left = None
+    smallest_right = None
     median = None
     for i in range(len(a)):
         op = a[i]
         num = x[i]
         if op == 'a':
-            if len(min_heap) == 0 and len(max_heap) == 0:
+            if len(left_heap) == 0 and len(right_heap) == 0:
                 median = num
-            elif num < heapq.nlargest(1, max_heap):
-                m = heapq.nlargest(1, max_heap)
-                heapq._heappop_max(max_heap)
-                if len(min_heap) == len(max_heap):
+            elif num < largest_left:
+                m = largest_left
+                heapq._heappop_max(right_heap)
+                if len(left_heap) == len(right_heap):
                     median = m
                 else:
-                    heapq.heappush(min_heap, m)
+                    # heapq.heappush(left_heap, m)
+                    left_heap, largest = push_to_min(left_heap, m)
                 
-                print_median(median, min_heap, max_heap)
+                print_median(median, left_heap, right_heap)
 
-            elif num > heapq.nsmallest(1, min_heap):
-                m = heapq.nsmallest(1, min_heap)
-                heapq.heappop(min_heap)
-                if len(min_heap) == len(max_heap):
+            elif num > heapq.nsmallest(1, left_heap):
+                m = heapq.nsmallest(1, left_heap)
+                heapq.heappop(left_heap)
+                if len(left_heap) == len(right_heap):
                     median = m
                 else:
-                    heapq.heappush(max_heap, m)
+                    heapq.heappush(right_heap, m)
 
-                print_median(median, min_heap, max_heap)
+                print_median(median, left_heap, right_heap)
             
-            elif num == heapq.nlargest(1, max_heap) or num == heapq.nsmallest(1, min_heap):
+            elif num == heapq.nlargest(1, right_heap) or num == heapq.nsmallest(1, left_heap):
                 median = num
                 print(median)
 
