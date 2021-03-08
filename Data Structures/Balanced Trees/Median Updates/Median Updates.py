@@ -29,26 +29,29 @@ def median(a, x):
                 median = num
             elif num < largest_left:
                 m = largest_left
-                heapq._heappop_max(right_heap)
+                # heapq._heappop_max(right_heap)
+                left_heap, largest_left = remove_from_heap(left_heap, largest_left)
                 if len(left_heap) == len(right_heap):
                     median = m
                 else:
                     # heapq.heappush(left_heap, m)
-                    left_heap, largest = push_to_min(left_heap, m)
+                    left_heap, largest_left = push_to_min(left_heap, m)
                 
                 print_median(median, left_heap, right_heap)
 
-            elif num > heapq.nsmallest(1, left_heap):
-                m = heapq.nsmallest(1, left_heap)
-                heapq.heappop(left_heap)
+            elif num > smallest_right:
+                m = smallest_right
+                # heapq.heappop(left_heap)
+                right_heap, smallest_right = remove_from_heap(right_heap, smallest_right)
                 if len(left_heap) == len(right_heap):
                     median = m
                 else:
-                    heapq.heappush(right_heap, m)
+                    # heapq.heappush(right_heap, m)
+                    right_heap, smallest_right = push_to_max(right_heap, m)
 
                 print_median(median, left_heap, right_heap)
             
-            elif num == heapq.nlargest(1, right_heap) or num == heapq.nsmallest(1, left_heap):
+            elif num == largest_left or num == smallest_right:
                 median = num
                 print(median)
 
