@@ -56,12 +56,19 @@ def median(a, x):
                 print(median)
 
         else:
-            if num in l:
-                l.remove(num)
-                if len(l) > 0:
-                    print(statistics.median(l))
-                else:
-                    print('Wrong!')
+            if num <= largest_left:
+                # l.remove(num)
+                left_heap, largest_left = remove_from_min(left_heap, num)
+                print_median(median, left_heap, right_heap)
+        
+            elif num >= smallest_right:
+                right_heap, smallest_right = remove_from_max(right_heap, num)
+                print_median(median, left_heap, right_heap)
+
+            elif num == median:
+                print(median)
+                median = None
+
             else:
                 print('Wrong!')
 
