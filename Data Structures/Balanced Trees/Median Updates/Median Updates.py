@@ -8,8 +8,6 @@ def print_median(median, largest, smallest):
     if median != None:
         print(median)
     else:
-        # a = heapq.nlargest(1, right_heap)
-        # b = heapq.nsmallest(1, left_heap)
         print((largest + smallest) / 2)
 
 def remove_from_left(left_heap, largest_left):
@@ -34,8 +32,6 @@ def push_to_right(right_heap, m):
 
 def median(a, x):
     l = []
-    # right_heap = heapq._heapify_max([])
-    # left_heap = heapq.heapify([])
     left_heap = []
     right_heap = []
     largest_left = None
@@ -49,24 +45,20 @@ def median(a, x):
                 median = num
             elif num < largest_left:
                 m = largest_left
-                # heapq._heappop_max(right_heap)
                 left_heap, largest_left = remove_from_left(left_heap, largest_left)
                 if len(left_heap) == len(right_heap):
                     median = m
                 else:
-                    # heapq.heappush(left_heap, m)
                     left_heap, largest_left = push_to_left(left_heap, m)
                 
                 print_median(median, left_heap, right_heap)
 
             elif num > smallest_right:
                 m = smallest_right
-                # heapq.heappop(left_heap)
                 right_heap, smallest_right = remove_from_right(right_heap, smallest_right)
                 if len(left_heap) == len(right_heap):
                     median = m
                 else:
-                    # heapq.heappush(right_heap, m)
                     right_heap, smallest_right = push_to_right(right_heap, m)
 
                 print_median(median, left_heap, right_heap)
@@ -77,7 +69,6 @@ def median(a, x):
 
         else:
             if num <= largest_left:
-                # l.remove(num)
                 left_heap, largest_left = remove_from_left(left_heap, num)
                 print_median(median, left_heap, right_heap)
         
