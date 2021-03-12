@@ -9,6 +9,11 @@ def print_median(median, largest, smallest):
         print(median)
     else:
         print((largest + smallest) / 2)
+    print('-----')
+    print(left_heap)
+    print(median)
+    print(right_heap)
+    print('-----')
 
 def remove_from_left(left_heap, largest_left):
     left_heap.remove(largest_left)
@@ -66,22 +71,37 @@ def median(a, x):
             elif num == largest_left or num == smallest_right:
                 median = num
                 print(median)
+                print('-----')
+                print(left_heap)
+                print(median)
+                print(right_heap)
+                print('-----')
 
         else:
-            if num <= largest_left:
+            if largest_left and num <= largest_left:
                 left_heap, largest_left = remove_from_left(left_heap, num)
                 print_median(median, left_heap, right_heap)
         
-            elif num >= smallest_right:
+            elif smallest_right and num >= smallest_right:
                 right_heap, smallest_right = remove_from_right(right_heap, num)
                 print_median(median, left_heap, right_heap)
 
             elif num == median:
                 print(median)
+                print('-----')
+                print(left_heap)
+                print(median)
+                print(right_heap)
+                print('-----')
                 median = None
 
             else:
                 print('Wrong!')
+                print('-----')
+                print(left_heap)
+                print(median)
+                print(right_heap)
+                print('-----')
 
 
 N = int(input())
