@@ -9,31 +9,31 @@ def print_median(median, largest, smallest):
         print(median)
     else:
         print((largest + smallest) / 2)
-    print('-----')
-    print(left_heap)
-    print(median)
-    print(right_heap)
-    print('-----')
+
 
 def remove_from_left(left_heap, largest_left):
     left_heap.remove(largest_left)
     largest_left = max(left_heap)
-    return left_heap, largest_left 
+    return left_heap, largest_left
+
 
 def remove_from_right(right_heap, smallest_right):
     right_heap.remove(smallest_right)
     smallest_right = min(right_heap)
     return right_heap, smallest_right
 
+
 def push_to_left(left_heap, m):
     left_heap.append(m)
     largest_left = max(left_heap)
     return left_heap, largest_left
 
+
 def push_to_right(right_heap, m):
     right_heap.append(m)
     smallest_right = min(right_heap)
     return right_heap, smallest_right
+
 
 def median(a, x):
     l = []
@@ -47,27 +47,47 @@ def median(a, x):
         num = x[i]
         if op == 'a':
             if len(left_heap) == 0 and len(right_heap) == 0:
-                median = num
+                if median == None:
+                    median = num
+                elif num > median:
+                    left_heap, largest_left = push_to_left(left_heap, median)
+                    median = num
+                elif num <= median:
+                    right_heap, smallest_right = push_to_right(right_heap, median)
+                    median = num
+
             elif num < largest_left:
                 m = largest_left
-                left_heap, largest_left = remove_from_left(left_heap, largest_left)
+                left_heap, largest_left = remove_from_left(
+                    left_heap, largest_left)
                 if len(left_heap) == len(right_heap):
                     median = m
                 else:
                     left_heap, largest_left = push_to_left(left_heap, m)
-                
+
                 print_median(median, left_heap, right_heap)
+                print('-----')
+                print(left_heap)
+                print(median)
+                print(right_heap)
+                print('-----')
 
             elif num > smallest_right:
                 m = smallest_right
-                right_heap, smallest_right = remove_from_right(right_heap, smallest_right)
+                right_heap, smallest_right = remove_from_right(
+                    right_heap, smallest_right)
                 if len(left_heap) == len(right_heap):
                     median = m
                 else:
                     right_heap, smallest_right = push_to_right(right_heap, m)
 
                 print_median(median, left_heap, right_heap)
-            
+                print('-----')
+                print(left_heap)
+                print(median)
+                print(right_heap)
+                print('-----')
+
             elif num == largest_left or num == smallest_right:
                 median = num
                 print(median)
