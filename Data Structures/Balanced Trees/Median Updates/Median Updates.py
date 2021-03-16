@@ -5,7 +5,9 @@ import heapq
 
 
 def print_median(median, largest, smallest):
-    if median != None:
+    if median == None and largest == None and smallest == None:
+        print('Wrong!')
+    elif median != None:
         print(median)
     else:
         print((largest + smallest) / 2)
@@ -52,10 +54,12 @@ def median(a, x):
                     median = num
                 elif num > median:
                     left_heap, largest_left = push_to_left(left_heap, median)
-                    median = num
+                    right_heap, smallest_right = push_to_right(right_heap, num)
+                    median = None
                 elif num <= median:
+                    left_heap, largest_left = push_to_left(left_heap, num)
                     right_heap, smallest_right = push_to_right(right_heap, median)
-                    median = num
+                    median = None
                 
                 print(median)
 
@@ -68,7 +72,7 @@ def median(a, x):
                 else:
                     left_heap, largest_left = push_to_left(left_heap, m)
 
-                print_median(median, left_heap, right_heap)
+                print_median(median, largest_left, smallest_right)
 
             elif smallest_right and num > smallest_right:
                 m = smallest_right
@@ -79,28 +83,45 @@ def median(a, x):
                 else:
                     right_heap, smallest_right = push_to_right(right_heap, m)
 
-                print_median(median, left_heap, right_heap)
+                print_median(median, largest_left, smallest_right)
 
             elif num == largest_left or num == smallest_right:
                 median = num
                 print(median)
 
+            else:
+                print('HERe 5')
+            
+            
+            print('-----')
+            print(str(left_heap) + str(median) + str(right_heap))
+            print('-----')
+
         else:
             print('REMOVING ' + str(num))
-            if largest_left and num <= largest_left:
+            if median == num:
+                median = None
+                print_median(median, largest_left, smallest_right)
+
+            elif largest_left and num <= largest_left:
                 left_heap, largest_left = remove_from_left(left_heap, num)
-                print_median(median, left_heap, right_heap)
+                median = smallest_right
+                right_heap, smallest_right = remove_from_right(right_heap, smallest_right)
+                print_median(median, largest_left, smallest_right)
         
             elif smallest_right and num >= smallest_right:
                 right_heap, smallest_right = remove_from_right(right_heap, num)
-                print_median(median, left_heap, right_heap)
-
-            elif num == median:
-                print(median)
-                median = None
+                median = largest_left
+                left_heap, largest_left = remove_from_left(left_heap, largest_left)
+                print_median(median, largest_left, smallest_right)
 
             else:
                 print('Wrong!')
+            
+            
+            print('-----')
+            print(str(left_heap) + str(median) + str(right_heap))
+            print('-----')
 
 
 N = int(input())
