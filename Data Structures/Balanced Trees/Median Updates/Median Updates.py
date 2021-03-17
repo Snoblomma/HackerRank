@@ -89,8 +89,8 @@ def median(a, x):
                 median = num
                 print(median)
 
-            else:
-                print('HERe 5')
+            # else:
+            #     print('HERe 5')
             
             
             print('-----')
