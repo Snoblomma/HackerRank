@@ -48,20 +48,23 @@ def median(a, x):
         op = a[i]
         num = x[i]
         if op == 'a':
-            print('ADDING ' + str(num))
+            # print('ADDING ' + str(num))
             if len(left_heap) == 0 and len(right_heap) == 0:
                 if median == None:
                     median = num
+                    print(median)
                 elif num > median:
                     left_heap, largest_left = push_to_left(left_heap, median)
                     right_heap, smallest_right = push_to_right(right_heap, num)
                     median = None
+                    print_median(median, largest_left, smallest_right)
                 elif num <= median:
                     left_heap, largest_left = push_to_left(left_heap, num)
                     right_heap, smallest_right = push_to_right(right_heap, median)
                     median = None
-                
-                print(median)
+                    print_median(median, largest_left, smallest_right)
+                else:
+                    print(median)
 
             elif num < largest_left:
                 m = largest_left
@@ -90,15 +93,15 @@ def median(a, x):
                 print(median)
 
             # else:
-            #     print('HERe 5')
+            #     print('HERe 6')
             
             
-            print('-----')
-            print(str(left_heap) + str(median) + str(right_heap))
-            print('-----')
+            # print('-----')
+            # print(str(left_heap) + str(median) + str(right_heap))
+            # print('-----')
 
         else:
-            print('REMOVING ' + str(num))
+            # print('REMOVING ' + str(num))
             if median == num:
                 median = None
                 print_median(median, largest_left, smallest_right)
@@ -119,9 +122,9 @@ def median(a, x):
                 print('Wrong!')
             
             
-            print('-----')
-            print(str(left_heap) + str(median) + str(right_heap))
-            print('-----')
+            # print('-----')
+            # print(str(left_heap) + str(median) + str(right_heap))
+            # print('-----')
 
 
 N = int(input())
