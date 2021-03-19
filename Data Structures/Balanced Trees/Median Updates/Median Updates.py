@@ -48,7 +48,6 @@ def median(a, x):
         op = a[i]
         num = x[i]
         if op == 'a':
-            # print('ADDING ' + str(num))
             if len(left_heap) == 0 and len(right_heap) == 0:
                 if median == None:
                     median = num
@@ -92,16 +91,7 @@ def median(a, x):
                 median = num
                 print(median)
 
-            # else:
-            #     print('HERe 6')
-            
-            
-            # print('-----')
-            # print(str(left_heap) + str(median) + str(right_heap))
-            # print('-----')
-
         else:
-            # print('REMOVING ' + str(num))
             if median == num:
                 median = None
                 print_median(median, largest_left, smallest_right)
@@ -121,11 +111,6 @@ def median(a, x):
             else:
                 print('Wrong!')
             
-            
-            # print('-----')
-            # print(str(left_heap) + str(median) + str(right_heap))
-            # print('-----')
-
 
 N = int(input())
 s = []
