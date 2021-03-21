@@ -8,6 +8,8 @@ def matching(a, b):
     for i in range(len(a)):
         if a[i] != b[i]:
             miss += 1
+            if miss > 1:
+                return False
     
     return True if miss <= 1 else False
 
@@ -20,7 +22,7 @@ def virusIndices(p, v):
             matches.append(i)
 
     print(' '.join(map(str, matches)) if len(matches) > 0 else 'No Match!')
-        
+
 
 if __name__ == '__main__':
     t = int(input())
